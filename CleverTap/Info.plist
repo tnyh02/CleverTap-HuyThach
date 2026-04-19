@@ -2,7 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>aps-environment</key>
-	<string>development</string>
+	<key>CleverTapAccountID</key>
+	<string>77K-9R8-766Z</string>
+	<key>CleverTapRegion</key>
+	<string>eu1</string>
+	<key>CleverTapToken</key>
+	<string>b2c-3aa</string>
 </dict>
 </plist>

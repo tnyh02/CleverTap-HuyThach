@@ -6,6 +6,7 @@
 //
 
 import UserNotifications
+import CleverTapSDK
 
 class NotificationService: UNNotificationServiceExtension {
 
@@ -15,10 +16,12 @@ class NotificationService: UNNotificationServiceExtension {
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-        
+        print("DEVLOG: Notification Service")
         if let bestAttemptContent = bestAttemptContent {
-            // Modify the notification content here...
-            bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
+            CleverTap.sharedInstance()?.recordNotificationViewedEvent(
+                withData: request.content.userInfo
+            )
+            print("DEVLOG: Tracking Push Impression:", request.content.userInfo)
             
             contentHandler(bestAttemptContent)
         }
@@ -31,5 +34,5 @@ class NotificationService: UNNotificationServiceExtension {
             contentHandler(bestAttemptContent)
         }
     }
-
+    
 }
